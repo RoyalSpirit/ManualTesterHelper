@@ -1,0 +1,31 @@
+.tab-pane {
+    -fx-tab-min-width: 250px;
+    -fx-tab-max-width: 250px;
+    -fx-tab-min-height: 40px;
+}
+
+.tab-label {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 15px;
+}
+
+.tab-heading {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.hbox-spacing {
+    -fx-spacing: 20px;
+}
+
+.bank-acc-margin {
+    -fx-padding: 30 0 0 0;
+}
+
+.text-field:error {
+    -fx-effect: dropshadow(gaussian, rgb(239, 5, 0), 10, 0.8, 0, 0);
+}
+
+.title { -fx-font-size:14px; -fx-font-weight:bold; }
+.error { -fx-border-color:red; -fx-border-width:2; }

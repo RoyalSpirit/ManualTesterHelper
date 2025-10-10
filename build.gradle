@@ -1,0 +1,92 @@
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+    id 'org.javamodularity.moduleplugin' version '1.8.15'
+}
+
+// ===== Импорты для variant-aware атрибутов =====
+import org.gradle.api.attributes.Category
+import org.gradle.api.attributes.LibraryElements
+import org.gradle.api.attributes.Usage
+import org.gradle.nativeplatform.OperatingSystemFamily
+import org.gradle.nativeplatform.MachineArchitecture
+
+repositories {
+    mavenCentral()
+}
+
+def jfxVer = '23.0.1'
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(21) }
+}
+
+// Определяем mac-классификатор для КОМПИЛЯЦИИ на вашей машине (Intel vs Apple Silicon)
+def isAarch64 = System.getProperty("os.arch").toLowerCase().contains("aarch64")
+def macClassifier = isAarch64 ? 'mac-aarch64' : 'mac'
+
+// ===== Зависимости для компиляции на macOS (чтобы module-info.java видел javafx.*) =====
+dependencies {
+    implementation "org.openjfx:javafx-base:${jfxVer}:${macClassifier}"
+    implementation "org.openjfx:javafx-graphics:${jfxVer}:${macClassifier}"
+    implementation "org.openjfx:javafx-controls:${jfxVer}:${macClassifier}"
+    implementation "org.openjfx:javafx-fxml:${jfxVer}:${macClassifier}"
+}
+
+// Плагин OpenJFX для удобного локального запуска на macOS (./gradlew run)
+javafx {
+    version = jfxVer
+    modules = ['javafx.controls', 'javafx.graphics']
+    modules += 'javafx.fxml'
+}
+
+application {
+    mainModule = 'demo.app'
+    mainClass  = 'demo.App'
+}
+
+// ===== Отдельная конфигурация для JavaFX под Windows (variant-aware) =====
+def winArchAttr = System.getenv('WIN_ARCH')?.toLowerCase() == 'aarch64'
+        ? MachineArchitecture.ARM64
+        : MachineArchitecture.X86_64
+
+configurations {
+    javafxWin {
+        canBeConsumed = false
+        canBeResolved = true
+        // Атрибуты, по которым Gradle выберет именно winRuntime-варианты JavaFX
+        attributes {
+            attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage, Usage.JAVA_RUNTIME))
+            attribute(Category.CATEGORY_ATTRIBUTE, objects.named(Category, Category.LIBRARY))
+            attribute(LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE, objects.named(LibraryElements, LibraryElements.JAR))
+            attribute(OperatingSystemFamily.OPERATING_SYSTEM_ATTRIBUTE, objects.named(OperatingSystemFamily, OperatingSystemFamily.WINDOWS))
+            attribute(MachineArchitecture.ARCHITECTURE_ATTRIBUTE, objects.named(MachineArchitecture, winArchAttr))
+        }
+    }
+}
+
+dependencies {
+    // Без classifier — атрибуты выше заставят выбрать winRuntime-вариант
+    javafxWin "org.openjfx:javafx-base:${jfxVer}"
+    javafxWin "org.openjfx:javafx-graphics:${jfxVer}"
+    javafxWin "org.openjfx:javafx-controls:${jfxVer}"
+    javafxWin "org.openjfx:javafx-fxml:${jfxVer}"
+}
+
+// ===== Сборка портативного комплекта для Windows =====
+tasks.register('prepareWinDist', Copy) {
+    dependsOn tasks.jar
+    from(tasks.jar) {
+        rename { 'app.jar' }
+    }
+    // Складываем Windows-версии JavaFX в lib/javafx
+    from(configurations.javafxWin) { into 'lib/javafx' }
+    into layout.buildDirectory.dir('win-dist')
+}
+
+jar {
+    archiveBaseName = 'app'
+    manifest {
+        attributes 'Main-Class': 'demo.App'
+    }
+}

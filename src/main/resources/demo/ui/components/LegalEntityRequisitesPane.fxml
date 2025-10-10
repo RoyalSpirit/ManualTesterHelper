@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="demo.ui.components.LegalEntityRequisitesController"
+      spacing="10" alignment="BASELINE_LEFT">
+    <padding><Insets top="20" left="20"/></padding>
+    <children>
+
+        <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
+            <Button text="Сгенерировать всё сразу" onAction="#onGenerateAllRequisites" minWidth="180" maxWidth="180"/>
+        </HBox>
+
+        <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
+            <padding><Insets top="15"/></padding>
+            <Button text="Сгенерировать ИНН" onAction="#onGenerateInn" minWidth="180" maxWidth="180"/>
+            <TextField fx:id="resultInnField" minWidth="150" maxWidth="150" editable="false"/>
+        </HBox>
+
+        <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
+            <padding><Insets top="15"/></padding>
+            <Button text="Сгенерировать КПП" onAction="#onGenerateKpp" minWidth="180" maxWidth="180"/>
+            <TextField fx:id="resultKppField" minWidth="150" maxWidth="150" editable="false"/>
+        </HBox>
+
+        <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
+            <padding><Insets top="15"/></padding>
+            <Button text="Сгенерировать ОГРН" onAction="#onGenerateOgrn" minWidth="180" maxWidth="180"/>
+            <TextField fx:id="resultOgrnField" minWidth="150" maxWidth="150" editable="false"/>
+        </HBox>
+
+        <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
+            <padding><Insets top="15"/></padding>
+            <Button text="Сгенерировать ОКПО" onAction="#onGenerateOkpo" minWidth="180" maxWidth="180"/>
+            <TextField fx:id="resultOkpoField" minWidth="150" maxWidth="150" editable="false"/>
+        </HBox>
+
+    </children>
+</VBox>

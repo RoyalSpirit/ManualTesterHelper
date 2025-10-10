@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+
+<?import demo.ui.controls.LimitedTextField?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="demo.ui.components.BicSwiftUuidController"
+      spacing="10" alignment="BASELINE_LEFT">
+    <padding><Insets top="20" left="20"/></padding>
+    <children>
+
+        <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
+            <padding><Insets top="15"/></padding>
+            <Button text="Сгенерировать UUID" onAction="#onGenerateUuid" minWidth="180" maxWidth="180"/>
+            <CheckBox fx:id="generateWithoutDashes" text="Сгенерировать без дефисов"/>
+            <TextField fx:id="resultUuidField" minWidth="400" maxWidth="400" editable="false"/>
+        </HBox>
+
+        <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
+            <padding><Insets top="15"/></padding>
+            <Button text="Сгенерировать БИК" onAction="#onGenerateBic" minWidth="180" maxWidth="180"/>
+            <TextField fx:id="resultBicField" minWidth="150" maxWidth="150" editable="false"/>
+        </HBox>
+
+        <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
+            <padding><Insets top="15"/></padding>
+            <Label text="Введите код страны:"/>
+            <LimitedTextField maxLength="2" mode="LETTERS" fx:id="countryCodeInputField" minWidth="50" maxWidth="50" promptText="RU"/>
+            <Button text="Сгенерировать SWIFT" onAction="#onGenerateSwift" minWidth="180" maxWidth="180"/>
+            <TextField fx:id="resultSwiftField" minWidth="150" maxWidth="150" editable="false"/>
+        </HBox>
+
+    </children>
+</VBox>

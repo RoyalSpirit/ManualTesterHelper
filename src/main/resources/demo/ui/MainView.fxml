@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="demo.ui.MainController">
+    <center>
+        <TabPane fx:id="tabs" stylesheets="@app.css">
+            <tabs>
+                <Tab text="Генератор счетов" closable="false">
+                    <fx:include source="components/BankAccountsPane.fxml"/>
+                </Tab>
+                <Tab text="Генератор реквизитов юрлица" closable="false">
+                    <fx:include source="components/LegalEntityRequisitesPane.fxml"/>
+                </Tab>
+                <Tab text="Генераторы БИК, SWIFT, UUID " closable="false">
+                    <fx:include source="components/BicSwiftUuidPane.fxml"/>
+                </Tab>
+                <Tab text="Генераторы чисел и строк" closable="false">
+                    <fx:include source="components/StringAndNumbersPane.fxml"/>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>
