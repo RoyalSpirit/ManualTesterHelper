@@ -45,13 +45,14 @@ The project supports generating Russian legal entity identifiers (INN, KPP, OGRN
 2. Run the command:
    ```bash
    gradlew clean build prepareWinDist
+   ```
 3. After the build completes, the folder `build/win-dist` will contain:
    - `app.jar`
    - `lib/javafx/` — JavaFX runtime libraries for Windows
 4. Launch the app with:
    ```bash
    java --module-path "lib/javafx" --add-modules javafx.controls,javafx.fxml -jar app.jar
-
+   ```
 ---
 #### 🍏 macOS
 
@@ -59,14 +60,17 @@ The project supports generating Russian legal entity identifiers (INN, KPP, OGRN
 2. To build and run the app:
    ```bash   
    ./gradlew clean build run
+   ```
 
 3. To build only the JAR file:
    ```bash
    ./gradlew clean build
+   ```
 
 4. To run manually with JavaFX SDK (if not globally installed):
    ```bash
    java --module-path "/path/to/javafx-sdk-23/lib" --add-modules javafx.controls,javafx.fxml -jar build/libs/app.jar
+   ```
 
 ---
 
@@ -140,7 +144,8 @@ src/\
 2. Выполни:
    ```bash
    gradlew clean build prepareWinDist
-
+   ```
+   
 3. После сборки появится папка:
 
    build/win-dist/\
@@ -150,7 +155,8 @@ src/\
 4. Запуск приложения:
    ```bash
    java --module-path "lib/javafx" --add-modules javafx.controls,javafx.fxml -jar app.jar
-
+   ```
+   
 ---
 
 ### 🍏 macOS
@@ -159,15 +165,19 @@ src/\
 2. Для сборки и одновременного запуска приложения выполни:
    ```bash
    ./gradlew clean build run
+   ```
 3. Чтобы собрать только JAR-файл без запуска, выполни:
    ```bash
    ./gradlew clean build
-Готовый артефакт будет находиться в: build/libs/app.jar
+   ```
+   Готовый артефакт будет находиться в: build/libs/app.jar
+
 4. Для ручного запуска JAR-файла с использованием JavaFX SDK (если не установлена глобально), выполни:
    ```bash
    java --module-path "/path/to/javafx-sdk-23/lib" \
      --add-modules javafx.controls,javafx.fxml \
      -jar build/libs/app.jar
+   ```
 
 💡 Если JavaFX SDK установлена глобально, можно опустить параметр --module-path.
 
