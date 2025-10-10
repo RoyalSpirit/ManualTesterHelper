@@ -59,10 +59,11 @@ The project supports generating Russian legal entity identifiers (INN, KPP, OGRN
 2. To build and run the app:
    ```bash   
    ./gradlew clean build run
+
 3. To build only the JAR file:
    ```bash
    ./gradlew clean build
-The file will appear in `build/libs/app.jar`.
+
 4. To run manually with JavaFX SDK (if not globally installed):
    ```bash
    java --module-path "/path/to/javafx-sdk-23/lib" --add-modules javafx.controls,javafx.fxml -jar build/libs/app.jar
@@ -78,8 +79,6 @@ Source: [ManualTesterHelper on GitHub](https://github.com/RoyalSpirit/ManualTest
 ---
 
 ## 🇷🇺 Русская версия
-
-# 🧰 ManualTesterHelper
 
 **ManualTesterHelper** — настольное JavaFX-приложение, упрощающее ручное тестирование.
 Позволяет быстро **генерировать тестовые данные**: ИНН, КПП, ОГРН, БИК, SWIFT, корреспондентские счета, случайные строки и числа.
