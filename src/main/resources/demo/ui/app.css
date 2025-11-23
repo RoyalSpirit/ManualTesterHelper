@@ -19,6 +19,14 @@
     -fx-spacing: 20px;
 }
 
+.common-padding-pane {
+    -fx-padding: 20 0 0 20;
+}
+
+.common-left-padding {
+    -fx-padding: 0 0 0 20;
+}
+
 .bank-acc-margin {
     -fx-padding: 30 0 0 0;
 }

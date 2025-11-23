@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<HBox xmlns:fx="http://javafx.com/fxml" fx:controller="demo.ui.components.BicSwiftUuidController"
+      styleClass="hbox-spacing, common-padding-pane" alignment="BASELINE_LEFT">
+    <Button text="Сгенерировать UUID" onAction="#onGenerateUuid" minWidth="180" maxWidth="180"/>
+    <CheckBox fx:id="generateWithoutDashes" text="Сгенерировать без дефисов"/>
+    <TextField fx:id="resultUuidField" minWidth="400" maxWidth="400" editable="false"/>
+</HBox>

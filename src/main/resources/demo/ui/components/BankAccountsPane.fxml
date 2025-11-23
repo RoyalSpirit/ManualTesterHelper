@@ -1,28 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<?import javafx.geometry.Insets?>
-<?import demo.ui.controls.LimitedTextField?>
-<HBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="demo.ui.components.BankAccountsController"
-      spacing="15" alignment="BASELINE_LEFT">
-    <padding><Insets top="20" left="20"/></padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="10" alignment="BASELINE_LEFT">
     <children>
-
-        <Label text="Введите БИК:" styleClass="bank-acc-margin"/>
-        <LimitedTextField maxLength="9" mode="DIGITS" fx:id="bicField" promptText="9 цифр" minWidth="110" maxWidth="110"/>
-
-        <Label text="Выберите валюту"/>
-        <ComboBox fx:id="currencyBox" minWidth="110" maxWidth="110"/>
-
-        <CheckBox fx:id="generateNostroAccount" text="Nostro"/>
-
-        <Button text="Сгенерировать счет" onAction="#onGenerateCorr"/>
-
-        <TextField fx:id="resultField"
-                   editable="false"
-                   prefColumnCount="28"/>
+        <Label text="Генератор корреспондентских счетов" styleClass="tab-heading, common-padding-pane"/>
+        <fx:include source="CorrespondenceAccountPane.fxml"/>
+        <Label text="Генератор овердрафтных счетов" styleClass="tab-heading, common-padding-pane"/>
+        <fx:include source="OverdraftAccountPane.fxml"/>
+        <Label text="Генератор счетов IBAN" styleClass="tab-heading, common-padding-pane"/>
+        <fx:include source="IbanAccountPane.fxml"/>
     </children>
-</HBox>
+</VBox>

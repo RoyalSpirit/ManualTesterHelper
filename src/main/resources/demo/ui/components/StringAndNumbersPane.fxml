@@ -1,73 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<?import javafx.geometry.Insets?>
-
-<?import demo.ui.controls.LimitedTextField?>
-<VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="demo.ui.components.StringAndNumbersController"
-      spacing="10" alignment="BASELINE_LEFT">
-    <padding><Insets top="20" left="20"/></padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="10" alignment="BASELINE_LEFT">
     <children>
-        <!--    Генератор случайных чисел    -->
-        <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
-            <padding><Insets top="15"/></padding>
-            <Label text="Генератор случайных чисел" styleClass="tab-heading"/>
-        </HBox>
-
-        <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
-            <padding><Insets top="5"/></padding>
-            <Label text="Введите длину строки:"/>
-            <LimitedTextField maxLength="6" mode="DIGITS" fx:id="numbersLengthInputField" minWidth="110" maxWidth="110" promptText="Например: 9"/>
-        </HBox>
-
-        <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
-            <padding><Insets top="5"/></padding>
-            <Button text="Сгенерировать число" onAction="#onGenerateNumbers" minWidth="200" maxWidth="200"/>
-            <TextField fx:id="resultNumbersField" minWidth="400" maxWidth="400" editable="false"/>
-        </HBox>
-
-        <!--    Генератор текста    -->
-        <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
-            <padding><Insets top="75"/></padding>
-            <Label text="Генератор текста" styleClass="tab-heading"/>
-        </HBox>
-
-        <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
-            <padding><Insets top="5"/></padding>
-            <Label text="Введите длину строки:"/>
-            <LimitedTextField maxLength="6" mode="DIGITS" fx:id="lettersLengthInputField" minWidth="110" maxWidth="110" promptText="Например: 9"/>
-        </HBox>
-
-        <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
-            <Label text="Выберите язык:"/>
-            <ComboBox fx:id="languageSelectionBox" minWidth="150" maxWidth="150"/>
-        </HBox>
-
-        <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
-            <padding><Insets top="15"/></padding>
-            <Button text="Сгенерировать текст" onAction="#onGenerateText" minWidth="200" maxWidth="200"/>
-            <TextField fx:id="resultLettersField" minWidth="850" maxWidth="850" editable="false"/>
-        </HBox>
-
-        <!--    Генератор спецсимволов    -->
-        <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
-            <padding><Insets top="75"/></padding>
-            <Label text="Генератор спецсимволов" styleClass="tab-heading"/>
-        </HBox>
-
-        <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
-            <padding><Insets top="5"/></padding>
-            <Label text="Введите длину строки:"/>
-            <LimitedTextField maxLength="6" mode="DIGITS" fx:id="symbolsLengthInputField" minWidth="110" maxWidth="110" promptText="Например: 9"/>
-        </HBox>
-
-        <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
-            <padding><Insets top="5"/></padding>
-            <Button text="Сгенерировать спецсимволы" onAction="#onGenerateSymbols" minWidth="200" maxWidth="200"/>
-            <TextField fx:id="resultSymbolsField" minWidth="600" maxWidth="600" editable="false"/>
-        </HBox>
+        <Label text="Генератор случайных чисел" styleClass="tab-heading, common-padding-pane"/>
+        <fx:include source="NumbersPane.fxml"/>
+        <Label text="Генератор текста" styleClass="tab-heading, common-padding-pane"/>
+        <fx:include source="StringsPane.fxml"/>
+        <Label text="Генератор спецсимволов" styleClass="tab-heading, common-padding-pane"/>
+        <fx:include source="SymbolsPane.fxml"/>
     </children>
 </VBox>
