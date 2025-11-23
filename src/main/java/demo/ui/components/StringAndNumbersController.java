@@ -1,7 +1,7 @@
 package demo.ui.components;
 
-import demo.generators.StringAndNumbersGenerator;
 import demo.domain.Language;
+import demo.generators.StringAndNumbersGenerator;
 import demo.ui.controls.LimitedTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,7 +14,6 @@ import java.util.function.IntFunction;
 
 import static demo.util.UiErrorsProcessing.clearError;
 import static demo.util.UiErrorsProcessing.markError;
-import static demo.util.Validators.isDigits;
 
 public class StringAndNumbersController implements Initializable {
 
@@ -40,9 +39,11 @@ public class StringAndNumbersController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        languageSelectionBox.getItems().setAll(Language.values());
-        if (!languageSelectionBox.getItems().isEmpty()) {
-            languageSelectionBox.getSelectionModel().select(0);
+        if (languageSelectionBox != null) {
+            languageSelectionBox.getItems().setAll(Language.values());
+            if (!languageSelectionBox.getItems().isEmpty()) {
+                languageSelectionBox.getSelectionModel().select(0);
+            }
         }
     }
 
@@ -52,7 +53,7 @@ public class StringAndNumbersController implements Initializable {
         int n;
         try {
             String length = lengthField.getText();
-            if (length.trim().isEmpty() || length == null) throw new NumberFormatException();
+            if (length == null || length.trim().isEmpty()) throw new NumberFormatException();
             n = Integer.parseInt(length.trim());
             if (n <= 0) throw new NumberFormatException();
         } catch (NumberFormatException ex) {

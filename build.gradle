@@ -4,13 +4,6 @@ plugins {
     id 'org.javamodularity.moduleplugin' version '1.8.15'
 }
 
-// ===== Импорты для variant-aware атрибутов =====
-import org.gradle.api.attributes.Category
-import org.gradle.api.attributes.LibraryElements
-import org.gradle.api.attributes.Usage
-import org.gradle.nativeplatform.OperatingSystemFamily
-import org.gradle.nativeplatform.MachineArchitecture
-
 repositories {
     mavenCentral()
 }
@@ -21,11 +14,11 @@ java {
     toolchain { languageVersion = JavaLanguageVersion.of(21) }
 }
 
-// Определяем mac-классификатор для КОМПИЛЯЦИИ на вашей машине (Intel vs Apple Silicon)
+// Определяем mac-классификатор для компиляции на Mac (Intel vs Apple Silicon)
 def isAarch64 = System.getProperty("os.arch").toLowerCase().contains("aarch64")
 def macClassifier = isAarch64 ? 'mac-aarch64' : 'mac'
 
-// ===== Зависимости для компиляции на macOS (чтобы module-info.java видел javafx.*) =====
+// Зависимости для компиляции на macOS (чтобы module-info.java видел javafx.*)
 dependencies {
     implementation "org.openjfx:javafx-base:${jfxVer}:${macClassifier}"
     implementation "org.openjfx:javafx-graphics:${jfxVer}:${macClassifier}"
@@ -42,13 +35,12 @@ javafx {
 
 application {
     mainModule = 'demo.app'
-    mainClass  = 'demo.App'
+    mainClass = 'demo.App'
 }
 
-// ===== Отдельная конфигурация для JavaFX под Windows (variant-aware) =====
+// Конфигурация для JavaFX под Windows
 def winArchAttr = System.getenv('WIN_ARCH')?.toLowerCase() == 'aarch64'
-        ? MachineArchitecture.ARM64
-        : MachineArchitecture.X86_64
+        ? MachineArchitecture.ARM64 : MachineArchitecture.X86_64
 
 configurations {
     javafxWin {
@@ -73,13 +65,13 @@ dependencies {
     javafxWin "org.openjfx:javafx-fxml:${jfxVer}"
 }
 
-// ===== Сборка портативного комплекта для Windows =====
+// Сборка портативного комплекта для Windows
 tasks.register('prepareWinDist', Copy) {
     dependsOn tasks.jar
     from(tasks.jar) {
         rename { 'app.jar' }
     }
-    // Складываем Windows-версии JavaFX в lib/javafx
+    // Помещаем Windows-версии JavaFX в lib/javafx
     from(configurations.javafxWin) { into 'lib/javafx' }
     into layout.buildDirectory.dir('win-dist')
 }

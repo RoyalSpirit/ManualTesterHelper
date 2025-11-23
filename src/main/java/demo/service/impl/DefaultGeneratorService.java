@@ -6,8 +6,8 @@ import demo.service.GeneratorService;
 public class DefaultGeneratorService implements GeneratorService {
 
     @Override
-    public String generateCorrespAccount(String bic, String currencyCode, boolean nostroFlag) {
-        return AccountGenerator.generateAccount(bic, currencyCode, nostroFlag);
+    public String generateCorrespAccount(String bic, String currencyCode, String bankType, boolean nostroFlag) {
+        return AccountGenerator.generateAccount(bic, currencyCode, bankType, nostroFlag);
     }
 
     @Override
