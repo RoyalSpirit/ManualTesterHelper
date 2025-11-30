@@ -2,9 +2,11 @@
 
 ![Main UI](screenshots/ManualTesterHelperOne.png)
 
-- ![](screenshots/ManualTesterHelperTwo.png)
-- ![](screenshots/ManualTesterHelperThree.png)
-- ![](screenshots/ManualTesterHelperFour.png)
+<p align="center">
+  <img src="screenshots/ManualTesterHelperTwo.png" width="240" />
+  <img src="screenshots/ManualTesterHelperThree.png" width="240" />
+  <img src="screenshots/ManualTesterHelperFour.png" width="240" />
+</p>
 
 [![Java](https://img.shields.io/badge/Java-21-orange?logo=openjdk)](https://www.oracle.com/java/)
 [![JavaFX](https://img.shields.io/badge/JavaFX-23-blue?logo=java)](https://openjfx.io/)
