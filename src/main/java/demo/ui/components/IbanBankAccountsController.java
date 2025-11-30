@@ -10,6 +10,8 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static demo.ui.UiUtils.copy;
+
 public class IbanBankAccountsController implements Initializable {
 
     @FXML
@@ -29,6 +31,11 @@ public class IbanBankAccountsController implements Initializable {
     private void  onGenerateIbanAccount() {
         IbanCountry ibanCountry = ibanCountryComboBox.getValue();
         resultIbanField.setText(IbanGenerator.generate(ibanCountry));
+    }
+
+    @FXML
+    private void copyIbanAccount() {
+        copy(resultIbanField);
     }
 
 }

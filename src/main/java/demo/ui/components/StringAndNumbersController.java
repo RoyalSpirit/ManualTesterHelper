@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.function.IntFunction;
 
+import static demo.ui.UiUtils.copy;
 import static demo.util.UiErrorsProcessing.clearError;
 import static demo.util.UiErrorsProcessing.markError;
 
@@ -77,15 +78,30 @@ public class StringAndNumbersController implements Initializable {
     }
 
     @FXML
+    private void copyGeneratedText() {
+        copy(resultLettersField);
+    }
+
+    @FXML
     private void onGenerateNumbers() {
         generateWithValidation(numbersLengthInputField, resultNumbersField,
                 StringAndNumbersGenerator::randomNumberGenerator);
     }
 
     @FXML
+    private void copyGeneratedNumbers() {
+        copy(resultNumbersField);
+    }
+
+    @FXML
     private void onGenerateSymbols() {
         generateWithValidation(symbolsLengthInputField, resultSymbolsField,
                 StringAndNumbersGenerator::randomSymbolsGenerator);
+    }
+
+    @FXML
+    private void copyGeneratedSymbols() {
+        copy(resultSymbolsField);
     }
 
 }

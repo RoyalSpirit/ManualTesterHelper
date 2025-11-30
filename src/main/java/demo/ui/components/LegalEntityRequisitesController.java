@@ -7,6 +7,8 @@ import demo.generators.OkpoGenerator;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
+import static demo.ui.UiUtils.copy;
+
 public class LegalEntityRequisitesController {
 
     @FXML
@@ -25,9 +27,19 @@ public class LegalEntityRequisitesController {
     }
 
     @FXML
+    private void copyInn() {
+        copy(resultInnField);
+    }
+
+    @FXML
     private void onGenerateKpp() {
         String resultKpp = KppGenerator.generateKpp();
         resultKppField.setText(resultKpp);
+    }
+
+    @FXML
+    private void copyKpp() {
+        copy(resultKppField);
     }
 
     @FXML
@@ -37,9 +49,19 @@ public class LegalEntityRequisitesController {
     }
 
     @FXML
+    private void copyOgrn() {
+        copy(resultOgrnField);
+    }
+
+    @FXML
     private void onGenerateOkpo() {
         String resulOkpo = OkpoGenerator.generateOkpo();
         resultOkpoField.setText(resulOkpo);
+    }
+
+    @FXML
+    private void copyOkpo() {
+        copy(resultOkpoField);
     }
 
     @FXML

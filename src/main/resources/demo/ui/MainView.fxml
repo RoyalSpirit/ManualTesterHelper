@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.BorderPane?>
-<BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="demo.ui.MainController">
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="demo.ui.MainController" styleClass="app-root">
+    <left>
+        <VBox fx:id="sidebar" prefWidth="275" spacing="6" styleClass="sidebar">
+            <children>
+                <ToggleButton fx:id="btnAccounts" text="Генератор счетов" onAction="#showBankAccounts" styleClass="sidebar-item"/>
+                <ToggleButton fx:id="btnLegal" text="Генератор реквизитов юрлица" onAction="#showLegalEntity" styleClass="sidebar-item"/>
+                <ToggleButton fx:id="btnCodes" text="Генераторы БИК, SWIFT, UUID" onAction="#showCodes" styleClass="sidebar-item"/>
+                <ToggleButton fx:id="btnStrings" text="Генераторы чисел и строк" onAction="#showStringsNumbers" styleClass="sidebar-item"/>
+                <Region VBox.vgrow="ALWAYS"/>
+                <HBox alignment="CENTER">
+                    <Button text="🌒 Тёмная тема" onAction="#onToggleThemeClicked" styleClass="sidebar-theme-button"/>
+                </HBox>
+                <HBox alignment="CENTER">
+                    <HBox styleClass="sidebar-footer-box">
+                        <Label text="🟧" styleClass="sidebar-footer-appbadge"/>
+                        <Label text="ManualTesterHelper" styleClass="sidebar-footer-title"/>
+                        <Label text="v.2.01" styleClass="sidebar-footer-version"/>
+                    </HBox>
+                </HBox>
+            </children>
+        </VBox>
+    </left>
     <center>
-        <TabPane fx:id="tabs" stylesheets="@app.css">
-            <tabs>
-                <Tab text="Генератор счетов" closable="false">
-                    <fx:include source="components/BankAccountsPane.fxml"/>
-                </Tab>
-                <Tab text="Генератор реквизитов юрлица" closable="false">
-                    <fx:include source="components/LegalEntityRequisitesPane.fxml"/>
-                </Tab>
-                <Tab text="Генераторы БИК, SWIFT, UUID " closable="false">
-                    <fx:include source="components/BicSwiftUuidPane.fxml"/>
-                </Tab>
-                <Tab text="Генераторы чисел и строк" closable="false">
-                    <fx:include source="components/StringAndNumbersPane.fxml"/>
-                </Tab>
-            </tabs>
-        </TabPane>
+        <StackPane fx:id="contentRoot" styleClass="content-pane"/>
     </center>
 </BorderPane>

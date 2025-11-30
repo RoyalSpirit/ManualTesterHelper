@@ -2,7 +2,6 @@ package demo;
 
 import demo.service.GeneratorService;
 import demo.service.impl.DefaultGeneratorService;
-import demo.ui.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,12 +16,15 @@ public class App extends Application {
         fxml.setControllerFactory(type -> {
             try {
                 var c = type.getDeclaredConstructor().newInstance();
-                if (c instanceof MainController mc) mc.setService(service);
                 return c;
             } catch (Exception e) { throw new RuntimeException(e);
             }
         });
-        Scene scene = new Scene(fxml.load(), 1200, 700);
+        Scene scene = new Scene(fxml.load(), 1500, 800);
+        scene.getStylesheets().add(
+                App.class.getResource("/demo/ui/app.css").toExternalForm()
+        );
+
         stage.setTitle("ManualTesterHelper");
         stage.setScene(scene);
         stage.setMinWidth(1200);

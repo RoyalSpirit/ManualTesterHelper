@@ -2,13 +2,19 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-<VBox xmlns:fx="http://javafx.com/fxml" spacing="10" alignment="BASELINE_LEFT">
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="16">
     <children>
-        <Label text="Генератор корреспондентских счетов" styleClass="tab-heading, common-padding-pane"/>
-        <fx:include source="CorrespondenceAccountPane.fxml"/>
-        <Label text="Генератор овердрафтных счетов" styleClass="tab-heading, common-padding-pane"/>
-        <fx:include source="OverdraftAccountPane.fxml"/>
-        <Label text="Генератор счетов IBAN" styleClass="tab-heading, common-padding-pane"/>
-        <fx:include source="IbanAccountPane.fxml"/>
+        <VBox styleClass="card">
+            <Label text="Генератор корреспондентских счетов" styleClass="section-title"/>
+            <fx:include source="CorrespondenceAccountPane.fxml"/>
+        </VBox>
+        <VBox styleClass="card">
+            <Label text="Генератор овердрафтных счетов" styleClass="section-title"/>
+            <fx:include source="OverdraftAccountPane.fxml"/>
+        </VBox>
+        <VBox styleClass="card">
+            <Label text="Генератор счетов IBAN" styleClass="section-title"/>
+            <fx:include source="IbanAccountPane.fxml"/>
+        </VBox>
     </children>
 </VBox>

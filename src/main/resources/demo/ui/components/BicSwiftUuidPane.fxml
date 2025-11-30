@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-<VBox xmlns:fx="http://javafx.com/fxml" spacing="10" alignment="BASELINE_LEFT">
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="16">
     <children>
-        <fx:include source="UuidPane.fxml"/>
-        <fx:include source="BicPane.fxml"/>
-        <fx:include source="SwiftPane.fxml"/>
+        <VBox styleClass="card">
+            <Label text="Генератор UUID" styleClass="section-title"/>
+            <fx:include source="UuidPane.fxml"/>
+        </VBox>
+
+        <VBox styleClass="card">
+            <Label text="Генератор БИК" styleClass="section-title"/>
+            <fx:include source="BicPane.fxml"/>
+        </VBox>
+
+        <VBox styleClass="card">
+            <Label text="Генератор SWIFT" styleClass="section-title"/>
+            <fx:include source="SwiftPane.fxml"/>
+        </VBox>
     </children>
 </VBox>

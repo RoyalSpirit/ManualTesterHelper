@@ -11,12 +11,17 @@
         <LimitedTextField maxLength="5" mode="DIGITS" fx:id="customPrefixField" promptText="32101" minWidth="55"
                           maxWidth="55"/>
         <Label text="Выберите префикс"/>
-        <ComboBox fx:id="presetBox" minWidth="200" maxWidth="200"/>
+        <ComboBox fx:id="presetBox" minWidth="220" maxWidth="220"/>
         <Label text="Введите коррсчет:"/>
         <LimitedTextField maxLength="20" mode="DIGITS" fx:id="corrField" minWidth="200" maxWidth="200"/>
     </HBox>
     <HBox spacing="20" alignment="CENTER_LEFT">
-        <Button text="Сгенерировать счет" onAction="#onGenerate"/>
-        <TextField fx:id="resultField" editable="false" minWidth="200" maxWidth="200"/>
+        <Button text="Сгенерировать счет" onAction="#onGenerate" minWidth="180" maxWidth="180"/>
+        <TextField fx:id="resultField" editable="false" minWidth="300" maxWidth="300"/>
+        <Button text="⧉" onAction="#copyOverdraftAccount" styleClass="copy-button">
+            <tooltip>
+                <Tooltip text="Скопировать в буфер" styleClass="copy-in-buffer-tooltip"/>
+            </tooltip>
+        </Button>
     </HBox>
 </VBox>

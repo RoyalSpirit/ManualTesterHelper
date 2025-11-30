@@ -17,6 +17,11 @@
     </HBox>
     <HBox spacing="20" alignment="CENTER_LEFT">
         <Button text="Сгенерировать текст" onAction="#onGenerateText" minWidth="200" maxWidth="200"/>
-        <TextField fx:id="resultLettersField" minWidth="850" maxWidth="850" editable="false"/>
+        <TextField fx:id="resultLettersField" minWidth="600" maxWidth="600" editable="false"/>
+        <Button text="⧉" onAction="#copyGeneratedText" styleClass="copy-button">
+            <tooltip>
+                <Tooltip text="Скопировать в буфер" styleClass="copy-in-buffer-tooltip"/>
+            </tooltip>
+        </Button>
     </HBox>
 </VBox>
