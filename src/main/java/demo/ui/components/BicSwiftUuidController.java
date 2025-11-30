@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 
 import java.util.UUID;
 
+import static demo.ui.UiUtils.copy;
 import static demo.util.UiErrorsProcessing.clearError;
 import static demo.util.UiErrorsProcessing.markError;
 import static demo.util.Validators.isLetters;
@@ -33,6 +34,11 @@ public class BicSwiftUuidController {
     }
 
     @FXML
+    private void copyBic() {
+        copy(resultBicField);
+    }
+
+    @FXML
     private void onGenerateSwift() throws InterruptedException {
         clearError(countryCodeInputField);
         String countryCode = countryCodeInputField.getText();
@@ -46,10 +52,20 @@ public class BicSwiftUuidController {
     }
 
     @FXML
+    private void copySwift() {
+        copy(resultSwiftField);
+    }
+
+    @FXML
     private void onGenerateUuid() {
         String uuid = UUID.randomUUID().toString();
         String resultUuid = generateWithoutDashes.isSelected() ? uuid.replaceAll("-", "") : uuid;
         resultUuidField.setText(resultUuid);
+    }
+
+    @FXML
+    private void copyUuid() {
+        copy(resultUuidField);
     }
 
 }

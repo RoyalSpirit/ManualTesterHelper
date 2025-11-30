@@ -1,5 +1,11 @@
 # 🧰 ManualTesterHelper
 
+![Main UI](screenshots/ManualTesterHelperOne.png)
+
+- ![](screenshots/ManualTesterHelperTwo.png)
+- ![](screenshots/ManualTesterHelperThree.png)
+- ![](screenshots/ManualTesterHelperFour.png)
+
 [![Java](https://img.shields.io/badge/Java-21-orange?logo=openjdk)](https://www.oracle.com/java/)
 [![JavaFX](https://img.shields.io/badge/JavaFX-23-blue?logo=java)](https://openjfx.io/)
 [![Gradle](https://img.shields.io/badge/Gradle-8-brightgreen?logo=gradle)](https://gradle.org/)

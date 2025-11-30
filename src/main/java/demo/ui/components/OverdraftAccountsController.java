@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
+import static demo.ui.UiUtils.copy;
 import static demo.util.UiErrorsProcessing.clearError;
 import static demo.util.UiErrorsProcessing.markError;
 
@@ -73,6 +74,11 @@ public class OverdraftAccountsController {
             resultField.clear();
             markError(customPrefixField, "Ошибка, необходимо ввести префикс");
         }
+    }
+
+    @FXML
+    private void copyOverdraftAccount() {
+        copy(resultField);
     }
 
     private static String safe(String s) {

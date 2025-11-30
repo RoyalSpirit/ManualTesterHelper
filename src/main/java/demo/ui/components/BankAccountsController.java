@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static demo.ui.UiUtils.copy;
 import static demo.util.UiErrorsProcessing.clearError;
 import static demo.util.UiErrorsProcessing.markError;
 import static demo.util.Validators.isDigits;
@@ -61,6 +62,11 @@ public class BankAccountsController implements Initializable {
         } catch (Exception ex) {
             resultField.setText("Ошибка: " + ex.getMessage());
         }
+    }
+
+    @FXML
+    private void copyCorrespAccount() {
+        copy(resultField);
     }
 
     private static String text(TextField tf) {
