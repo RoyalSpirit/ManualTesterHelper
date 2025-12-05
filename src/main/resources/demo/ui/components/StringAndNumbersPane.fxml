@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="16">
+    <children>
+        <VBox styleClass="card">
+            <Label text="Генератор случайных чисел" styleClass="section-title"/>
+            <fx:include source="NumbersPane.fxml"/>
+        </VBox>
+
+        <VBox styleClass="card">
+            <Label text="Генератор текста" styleClass="section-title"/>
+            <fx:include source="StringsPane.fxml"/>
+        </VBox>
+
+        <VBox styleClass="card">
+            <Label text="Генератор спецсимволов" styleClass="section-title"/>
+            <fx:include source="SymbolsPane.fxml"/>
+        </VBox>
+    </children>
+</VBox>

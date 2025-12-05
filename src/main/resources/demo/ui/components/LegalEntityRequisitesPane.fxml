@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="demo.ui.components.LegalEntityRequisitesController" spacing="16">
+    <children>
+        <VBox styleClass="card" spacing="10" alignment="BASELINE_LEFT">
+            <Label text="Генератор реквизитов юридического лица" styleClass="section-title"/>
+            <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
+                <Button text="Сгенерировать всё сразу" onAction="#onGenerateAllRequisites" minWidth="180" maxWidth="180"/>
+            </HBox>
+            <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
+                <padding>
+                    <Insets top="15"/>
+                </padding>
+                <Button text="Сгенерировать ИНН" onAction="#onGenerateInn" minWidth="180" maxWidth="180"/>
+                <TextField fx:id="resultInnField" minWidth="150" maxWidth="150" editable="false"/>
+                <Button text="⧉" onAction="#copyInn" styleClass="copy-button">
+                    <tooltip>
+                        <Tooltip text="Скопировать в буфер" styleClass="copy-in-buffer-tooltip"/>
+                    </tooltip>
+                </Button>
+            </HBox>
+            <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
+                <padding>
+                    <Insets top="15"/>
+                </padding>
+                <Button text="Сгенерировать КПП" onAction="#onGenerateKpp" minWidth="180" maxWidth="180"/>
+                <TextField fx:id="resultKppField" minWidth="150" maxWidth="150" editable="false"/>
+                <Button text="⧉" onAction="#copyKpp" styleClass="copy-button">
+                    <tooltip>
+                        <Tooltip text="Скопировать в буфер" styleClass="copy-in-buffer-tooltip"/>
+                    </tooltip>
+                </Button>
+            </HBox>
+            <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
+                <padding>
+                    <Insets top="15"/>
+                </padding>
+                <Button text="Сгенерировать ОГРН" onAction="#onGenerateOgrn" minWidth="180" maxWidth="180"/>
+                <TextField fx:id="resultOgrnField" minWidth="150" maxWidth="150" editable="false"/>
+                <Button text="⧉" onAction="#copyOgrn" styleClass="copy-button">
+                    <tooltip>
+                        <Tooltip text="Скопировать в буфер" styleClass="copy-in-buffer-tooltip"/>
+                    </tooltip>
+                </Button>
+            </HBox>
+            <HBox styleClass="hbox-spacing" alignment="BASELINE_LEFT">
+                <padding>
+                    <Insets top="15"/>
+                </padding>
+                <Button text="Сгенерировать ОКПО" onAction="#onGenerateOkpo" minWidth="180" maxWidth="180"/>
+                <TextField fx:id="resultOkpoField" minWidth="150" maxWidth="150" editable="false"/>
+                <Button text="⧉" onAction="#copyOkpo" styleClass="copy-button">
+                    <tooltip>
+                        <Tooltip text="Скопировать в буфер" styleClass="copy-in-buffer-tooltip"/>
+                    </tooltip>
+                </Button>
+            </HBox>
+        </VBox>
+    </children>
+</VBox>

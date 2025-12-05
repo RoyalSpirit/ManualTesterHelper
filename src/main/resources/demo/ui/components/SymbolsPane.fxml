@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import demo.ui.controls.LimitedTextField?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="demo.ui.components.StringAndNumbersController"
+      styleClass="hbox-spacing, common-left-padding" alignment="BASELINE_LEFT">
+    <HBox spacing="20" alignment="CENTER_LEFT">
+        <Label text="Введите длину строки:"/>
+        <LimitedTextField maxLength="6" mode="DIGITS" fx:id="symbolsLengthInputField" minWidth="110" maxWidth="110"
+                          promptText="Например: 9"/>
+    </HBox>
+    <HBox spacing="20" alignment="CENTER_LEFT">
+        <Button text="Сгенерировать спецсимволы" onAction="#onGenerateSymbols" minWidth="200" maxWidth="200"/>
+        <TextField fx:id="resultSymbolsField" minWidth="600" maxWidth="600" editable="false"/>
+        <Button text="⧉" onAction="#copyGeneratedSymbols" styleClass="copy-button">
+            <tooltip>
+                <Tooltip text="Скопировать в буфер" styleClass="copy-in-buffer-tooltip"/>
+            </tooltip>
+        </Button>
+    </HBox>
+</VBox>

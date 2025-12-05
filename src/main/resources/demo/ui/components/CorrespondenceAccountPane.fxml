@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import demo.ui.controls.LimitedTextField?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="demo.ui.components.BankAccountsController"
+      styleClass="hbox-spacing, common-left-padding" alignment="BASELINE_LEFT">
+    <HBox spacing="20" alignment="CENTER_LEFT">
+        <Label text="Введите БИК:"/>
+        <LimitedTextField maxLength="9" mode="DIGITS" fx:id="bicField" promptText="9 цифр" minWidth="110" maxWidth="110"/>
+        <Label text="Выберите валюту"/>
+        <ComboBox fx:id="currencyBox" minWidth="140" maxWidth="140"/>
+        <Label text="Тип"/>
+        <ComboBox fx:id="bankTypeBox" minWidth="150" maxWidth="150"/>
+        <CheckBox fx:id="generateNostroAccount" text="Nostro"/>
+
+    </HBox>
+    <HBox spacing="20" alignment="CENTER_LEFT">
+        <Button text="Сгенерировать счет" onAction="#onGenerateCorr" minWidth="180" maxWidth="180"/>
+        <TextField fx:id="resultField" editable="false" minWidth="300" maxWidth="300"/>
+        <Button text="⧉" onAction="#copyCorrespAccount" styleClass="copy-button">
+            <tooltip>
+                <Tooltip text="Скопировать в буфер" styleClass="copy-in-buffer-tooltip"/>
+            </tooltip>
+        </Button>
+    </HBox>
+</VBox>
