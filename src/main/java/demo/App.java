@@ -27,8 +27,8 @@ public class App extends Application {
 
         stage.setTitle("ManualTesterHelper");
         stage.setScene(scene);
-        stage.setMinWidth(1200);
-        stage.setMinHeight(700);
+        stage.setMinWidth(1500);
+        stage.setMinHeight(800);
         stage.show();
     }
 

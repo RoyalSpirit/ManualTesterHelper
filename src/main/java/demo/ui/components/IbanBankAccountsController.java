@@ -30,7 +30,7 @@ public class IbanBankAccountsController implements Initializable {
     @FXML
     private void  onGenerateIbanAccount() {
         IbanCountry ibanCountry = ibanCountryComboBox.getValue();
-        resultIbanField.setText(IbanGenerator.generate(ibanCountry));
+        resultIbanField.setText(IbanGenerator.generateIban(ibanCountry));
     }
 
     @FXML

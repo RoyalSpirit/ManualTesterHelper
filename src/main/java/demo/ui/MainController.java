@@ -27,6 +27,8 @@ public class MainController {
     private ToggleButton btnCodes;
     @FXML
     private ToggleButton btnStrings;
+    @FXML
+    private ToggleButton btnSnils;
 
     private ToggleGroup menuGroup;
 
@@ -38,6 +40,7 @@ public class MainController {
         btnLegal.setToggleGroup(menuGroup);
         btnCodes.setToggleGroup(menuGroup);
         btnStrings.setToggleGroup(menuGroup);
+        btnSnils.setToggleGroup(menuGroup);
 
         btnAccounts.setSelected(true);
         showBankAccounts();
@@ -67,6 +70,11 @@ public class MainController {
     @FXML
     private void showStringsNumbers() {
         loadWithFade("/demo/ui/components/StringAndNumbersPane.fxml");
+    }
+
+    @FXML
+    private void showSnils() {
+        loadWithFade("/demo/ui/components/SnilsPane.fxml");
     }
 
     @FXML

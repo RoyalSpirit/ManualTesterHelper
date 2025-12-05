@@ -14,7 +14,7 @@ public final class IbanGenerator {
     private IbanGenerator() {
     }
 
-    public static String generate(IbanCountry country) {
+    public static String generateIban(IbanCountry country) {
         String template = country.getBbanTemplate();
         if (template == null || template.isEmpty()) {
             throw new IllegalArgumentException("BBAN template not defined for " + country);
@@ -37,17 +37,14 @@ public final class IbanGenerator {
         return sb.toString();
     }
 
-    // compute 2-digit checksum according to ISO 13616
     private static String computeChecksum(String cc, String bban) {
         String rearranged = bban + cc + "00";
-        // convert to numeric string
         String numeric = toNumeric(rearranged);
         int mod = mod97(numeric);
         int check = 98 - mod;
         return (check < 10 ? "0" : "") + check;
     }
 
-    // convert letters -> 10..35, digits remain
     private static String toNumeric(String input) {
         StringBuilder sb = new StringBuilder(input.length() * 2);
         for (char ch : input.toCharArray()) {
@@ -56,23 +53,14 @@ public final class IbanGenerator {
                 sb.append(val);
             } else if (Character.isDigit(ch)) {
                 sb.append(ch);
-            } else {
-                // ignore other chars (spaces etc.)
             }
         }
         return sb.toString();
     }
 
-    // fast mod97 over big numeric string using BigInteger
     private static int mod97(String numeric) {
-        // BigInteger is fine here for simplicity and correctness
         BigInteger bi = new BigInteger(numeric);
         return bi.mod(BigInteger.valueOf(97)).intValue();
-    }
-
-    private static boolean mod97Check(String rearranged) {
-        String numeric = toNumeric(rearranged);
-        return mod97(numeric) == 1;
     }
 
 }
