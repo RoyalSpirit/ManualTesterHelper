@@ -19,7 +19,7 @@
                     <HBox styleClass="sidebar-footer-box">
                         <Label text="🟧" styleClass="sidebar-footer-appbadge"/>
                         <Label text="ManualTesterHelper" styleClass="sidebar-footer-title"/>
-                        <Label text="v.2.01" styleClass="sidebar-footer-version"/>
+                        <Label text="v.2.03" styleClass="sidebar-footer-version"/>
                     </HBox>
                 </HBox>
             </children>

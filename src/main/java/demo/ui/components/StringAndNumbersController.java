@@ -1,7 +1,7 @@
 package demo.ui.components;
 
 import demo.domain.Language;
-import demo.generators.StringAndNumbersGenerator;
+import demo.ui.BaseController;
 import demo.ui.controls.LimitedTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,10 +13,10 @@ import java.util.ResourceBundle;
 import java.util.function.IntFunction;
 
 import static demo.ui.UiUtils.copy;
-import static demo.util.UiErrorsProcessing.clearError;
-import static demo.util.UiErrorsProcessing.markError;
+import static demo.ui.util.UiErrorsProcessing.clearError;
+import static demo.ui.util.UiErrorsProcessing.markError;
 
-public class StringAndNumbersController implements Initializable {
+public class StringAndNumbersController extends BaseController implements Initializable {
 
     @FXML
     private LimitedTextField numbersLengthInputField;
@@ -71,9 +71,8 @@ public class StringAndNumbersController implements Initializable {
     @FXML
     private void onGenerateText() {
         generateWithValidation(lettersLengthInputField, resultLettersField, n -> {
-            Language getLanguageFromComboBox = languageSelectionBox.getValue();
-            String language = (getLanguageFromComboBox == Language.RUSSIAN) ? "Russian" : "English";
-            return StringAndNumbersGenerator.randomStringGenerator(n, language);
+            Language lang = languageSelectionBox.getValue();
+            return generatorService.generateRandomText(n, lang);
         });
     }
 
@@ -85,7 +84,7 @@ public class StringAndNumbersController implements Initializable {
     @FXML
     private void onGenerateNumbers() {
         generateWithValidation(numbersLengthInputField, resultNumbersField,
-                StringAndNumbersGenerator::randomNumberGenerator);
+                generatorService::generateRandomNumbers);
     }
 
     @FXML
@@ -96,7 +95,7 @@ public class StringAndNumbersController implements Initializable {
     @FXML
     private void onGenerateSymbols() {
         generateWithValidation(symbolsLengthInputField, resultSymbolsField,
-                StringAndNumbersGenerator::randomSymbolsGenerator);
+                generatorService::generateRandomSymbols);
     }
 
     @FXML

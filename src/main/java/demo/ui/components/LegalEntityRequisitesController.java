@@ -1,15 +1,12 @@
 package demo.ui.components;
 
-import demo.generators.InnGenerator;
-import demo.generators.KppGenerator;
-import demo.generators.OgrnGenerator;
-import demo.generators.OkpoGenerator;
+import demo.ui.BaseController;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 import static demo.ui.UiUtils.copy;
 
-public class LegalEntityRequisitesController {
+public class LegalEntityRequisitesController extends BaseController {
 
     @FXML
     private TextField resultInnField;
@@ -22,8 +19,7 @@ public class LegalEntityRequisitesController {
 
     @FXML
     private void onGenerateInn() {
-        String resultInn = InnGenerator.generateInn();
-        resultInnField.setText(resultInn);
+        resultInnField.setText(generatorService.generateInn());
     }
 
     @FXML
@@ -33,8 +29,7 @@ public class LegalEntityRequisitesController {
 
     @FXML
     private void onGenerateKpp() {
-        String resultKpp = KppGenerator.generateKpp();
-        resultKppField.setText(resultKpp);
+        resultKppField.setText(generatorService.generateKpp());
     }
 
     @FXML
@@ -44,8 +39,7 @@ public class LegalEntityRequisitesController {
 
     @FXML
     private void onGenerateOgrn() {
-        String resultOgrn = OgrnGenerator.generateOgrn();
-        resultOgrnField.setText(resultOgrn);
+        resultOgrnField.setText(generatorService.generateOgrn());
     }
 
     @FXML
@@ -55,8 +49,7 @@ public class LegalEntityRequisitesController {
 
     @FXML
     private void onGenerateOkpo() {
-        String resulOkpo = OkpoGenerator.generateOkpo();
-        resultOkpoField.setText(resulOkpo);
+        resultOkpoField.setText(generatorService.generateOkpo());
     }
 
     @FXML

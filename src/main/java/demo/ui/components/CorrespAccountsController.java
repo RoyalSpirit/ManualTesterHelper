@@ -1,7 +1,7 @@
 package demo.ui.components;
 
 import demo.domain.Currency;
-import demo.generators.AccountGenerator;
+import demo.ui.BaseController;
 import demo.ui.controls.LimitedTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,11 +13,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static demo.ui.UiUtils.copy;
-import static demo.util.UiErrorsProcessing.clearError;
-import static demo.util.UiErrorsProcessing.markError;
+import static demo.ui.util.UiErrorsProcessing.clearError;
+import static demo.ui.util.UiErrorsProcessing.markError;
 import static demo.util.Validators.isDigits;
 
-public class BankAccountsController implements Initializable {
+public class CorrespAccountsController extends BaseController implements Initializable {
 
     @FXML
     private LimitedTextField bicField;
@@ -57,7 +57,11 @@ public class BankAccountsController implements Initializable {
         boolean isNostro = generateNostroAccount.isSelected();
 
         try {
-            String acc = AccountGenerator.generateAccount(bic, currencyBox.getValue().code(), bankTypeBox.getValue(), isNostro);
+            String acc = generatorService.generateCorrespAccount(
+                    bic,
+                    currencyBox.getValue().code(),
+                    bankTypeBox.getValue(),
+                    isNostro);
             resultField.setText(acc);
         } catch (Exception ex) {
             resultField.setText("Ошибка: " + ex.getMessage());

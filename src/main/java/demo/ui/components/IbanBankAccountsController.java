@@ -1,7 +1,7 @@
 package demo.ui.components;
 
 import demo.domain.IbanCountry;
-import demo.generators.IbanGenerator;
+import demo.ui.BaseController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 
 import static demo.ui.UiUtils.copy;
 
-public class IbanBankAccountsController implements Initializable {
+public class IbanBankAccountsController extends BaseController implements Initializable {
 
     @FXML
     private ComboBox<IbanCountry> ibanCountryComboBox;
@@ -30,7 +30,7 @@ public class IbanBankAccountsController implements Initializable {
     @FXML
     private void  onGenerateIbanAccount() {
         IbanCountry ibanCountry = ibanCountryComboBox.getValue();
-        resultIbanField.setText(IbanGenerator.generateIban(ibanCountry));
+        resultIbanField.setText(generatorService.generateIban(ibanCountry));
     }
 
     @FXML
