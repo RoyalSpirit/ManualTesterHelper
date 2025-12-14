@@ -14,7 +14,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import static demo.ui.UiUtils.showToast;
 
-public class MainController {
+public class MainController extends BaseController{
 
     @FXML
     private StackPane contentRoot;
@@ -98,11 +98,23 @@ public class MainController {
     private void loadWithFade(String path) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+            loader.setControllerFactory(type -> {
+                try {
+                    Object controller = type.getDeclaredConstructor().newInstance();
+                    if (controller instanceof BaseController base) {
+                        base.setGeneratorService(generatorService); // <-- вот это ключ
+                    }
+                    return controller;
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
             Node newNode = loader.load();
 
             Node oldNode = contentRoot.getChildren().isEmpty()
                     ? null
-                    : contentRoot.getChildren().get(0);
+                    : contentRoot.getChildren().getFirst();
 
             if (oldNode == null) {
                 contentRoot.getChildren().setAll(newNode);

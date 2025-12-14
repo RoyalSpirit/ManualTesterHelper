@@ -1,7 +1,6 @@
 package demo.ui.components;
 
-import demo.generators.BicGenerator;
-import demo.generators.SwiftGenerator;
+import demo.ui.BaseController;
 import demo.ui.controls.LimitedTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -10,11 +9,11 @@ import javafx.scene.control.TextField;
 import java.util.UUID;
 
 import static demo.ui.UiUtils.copy;
-import static demo.util.UiErrorsProcessing.clearError;
-import static demo.util.UiErrorsProcessing.markError;
+import static demo.ui.util.UiErrorsProcessing.clearError;
+import static demo.ui.util.UiErrorsProcessing.markError;
 import static demo.util.Validators.isLetters;
 
-public class BicSwiftUuidController {
+public class BicSwiftUuidController extends BaseController {
 
     @FXML
     private TextField resultBicField;
@@ -29,7 +28,7 @@ public class BicSwiftUuidController {
 
     @FXML
     private void onGenerateBic() {
-        String resultBic = BicGenerator.generateBic();
+        String resultBic = generatorService.generateBic();
         resultBicField.setText(resultBic);
     }
 
@@ -39,7 +38,7 @@ public class BicSwiftUuidController {
     }
 
     @FXML
-    private void onGenerateSwift() throws InterruptedException {
+    private void onGenerateSwift() {
         clearError(countryCodeInputField);
         String countryCode = countryCodeInputField.getText();
         if (!isLetters(countryCode, 2)) {
@@ -47,7 +46,7 @@ public class BicSwiftUuidController {
             resultSwiftField.clear();
             return;
         }
-        String resultSwift = SwiftGenerator.generateEightSwift(countryCode);
+        String resultSwift = generatorService.generateSwift(countryCode);
         resultSwiftField.setText(resultSwift);
     }
 

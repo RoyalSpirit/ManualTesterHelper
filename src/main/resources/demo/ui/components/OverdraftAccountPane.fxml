@@ -8,8 +8,8 @@
       styleClass="hbox-spacing, common-left-padding" alignment="BASELINE_LEFT">
     <HBox spacing="20" alignment="CENTER_LEFT">
         <Label text="Введите префикс:"/>
-        <LimitedTextField maxLength="5" mode="DIGITS" fx:id="customPrefixField" promptText="32101" minWidth="55"
-                          maxWidth="55"/>
+        <LimitedTextField maxLength="5" mode="DIGITS" fx:id="customPrefixField" promptText="32101" minWidth="65"
+                          maxWidth="65"/>
         <Label text="Выберите префикс"/>
         <ComboBox fx:id="presetBox" minWidth="220" maxWidth="220"/>
         <Label text="Введите коррсчет:"/>

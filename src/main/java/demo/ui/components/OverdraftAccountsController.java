@@ -2,17 +2,17 @@ package demo.ui.components;
 
 
 import demo.domain.OverdraftPrefixes;
-import demo.generators.OverdraftAccountsGenerator;
+import demo.ui.BaseController;
 import demo.ui.controls.LimitedTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 import static demo.ui.UiUtils.copy;
-import static demo.util.UiErrorsProcessing.clearError;
-import static demo.util.UiErrorsProcessing.markError;
+import static demo.ui.util.UiErrorsProcessing.clearError;
+import static demo.ui.util.UiErrorsProcessing.markError;
 
-public class OverdraftAccountsController {
+public class OverdraftAccountsController extends BaseController {
 
     @FXML
     private LimitedTextField corrField;
@@ -66,7 +66,7 @@ public class OverdraftAccountsController {
                 : safe(customPrefixField.getText());
 
         try {
-            String overdraft = OverdraftAccountsGenerator.generateOverdraftAccount(preset, corr, customPrefix);
+            String overdraft = generatorService.generateOverdraftAccount(preset, corr, customPrefix);
             clearError(corrField);
             clearError(customPrefixField);
             resultField.setText(overdraft);

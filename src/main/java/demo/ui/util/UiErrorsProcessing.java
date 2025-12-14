@@ -1,4 +1,4 @@
-package demo.util;
+package demo.ui.util;
 
 import javafx.css.PseudoClass;
 import javafx.scene.control.TextField;
